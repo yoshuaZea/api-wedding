@@ -3,6 +3,11 @@ import Invitacion from '../models/Invitacion.mjs'
 import { v4 as uuid } from 'uuid'
 
 class Invitados {
+
+    test = (req, res) => {
+        return res.json('Hola')
+    }
+
     crearInvitacion = async (req, res, next) => {
 
         // Verificar si hay errores
