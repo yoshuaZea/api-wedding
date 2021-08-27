@@ -1,16 +1,21 @@
 import Sequelize from 'sequelize'
-import dotenv from 'dotenv'
 import db from '../config/db.mjs'
+// import Cliente from './Cliente.mjs'
 
-dotenv.config({ path: '.env'})
-
-const Invitacion = db.define('Invitacion', {
+const Invitacion = db.define('invitaciones', {
     id: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.INTEGER.UNSIGNED,
         primaryKey: true,
         autoIncrement: true
     },
+    bodaId: {
+        type: Sequelize.INTEGER.UNSIGNED
+    },
     uuid: Sequelize.UUID,
+    saludo: {
+        type: Sequelize.STRING(255),
+        allowNull: true
+    },
     nombre: {
         type: Sequelize.STRING(255),
         allowNull: false
@@ -19,16 +24,24 @@ const Invitacion = db.define('Invitacion', {
         type: Sequelize.TINYINT,
         allowNull: false
     },
-    escuincles: {
+    peques: {
         type: Sequelize.TINYINT,
         allowNull: false
     },
     adultosConfirmados: Sequelize.TINYINT,
-    escuinclesConfirmados: Sequelize.TINYINT,
+    pequesConfirmados: Sequelize.TINYINT,
     confirmado: {
         type: Sequelize.BOOLEAN,
         default: 0
     }
+}, {
+    Sequelize,
+    freezeTableName: true,
 })
+
+// // RELACIONES
+// Invitacion.belongsTo(Cliente, {
+//     foreignKey: 'boda_Id'
+// })
 
 export default Invitacion 

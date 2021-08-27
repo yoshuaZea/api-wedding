@@ -8,8 +8,6 @@ import Invitados from '../controllers/invitadosController.mjs'
 const router = express.Router();
 
 export default function() {
-
-
     // HOME
     router.get('/', Invitados.test)
 
@@ -18,7 +16,7 @@ export default function() {
         [
             check('nombre').notEmpty().withMessage('El nombre es obligatorio'),
             check('adultos').notEmpty().withMessage('Cuantos adultos es obligatorio').isNumeric().withMessage('No es un valor numérico'),
-            check('escuincles').notEmpty().withMessage('Cuantos escuincles es obligatorio').isNumeric().withMessage('No es un valor numérico'),
+            check('peques').notEmpty().withMessage('Cuantos niños es obligatorio').isNumeric().withMessage('No es un valor numérico'),
         ],
         Invitados.crearInvitacion
     )
@@ -34,7 +32,7 @@ export default function() {
         [
             check('uuid').isUUID().withMessage('El número de invitación es incorrecto'),
             check('adultos').notEmpty().withMessage('Cuantos adultos es obligatorio').isNumeric().withMessage('No es un valor numérico'),
-            check('escuincles').notEmpty().withMessage('Cuantos escuincles es obligatorio').isNumeric().withMessage('No es un valor numérico'),
+            check('peques').notEmpty().withMessage('Cuantos niños es obligatorio').isNumeric().withMessage('No es un valor numérico'),
         ],
         Invitados.confirmarInvitacion
     )

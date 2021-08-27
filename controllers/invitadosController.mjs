@@ -45,6 +45,7 @@ class Invitados {
     verificarInvitacion = async(req, res) => {
         // Extraer uuid
         const { uuid } = req.params
+        const bodaId = req.header('x-wedding-header')
 
         // Verificar si hay errores
         const errors = validationResult(req)
@@ -56,7 +57,10 @@ class Invitados {
         try {
             // Buscar la invitación
             const invitacion = await Invitacion.findOne({ 
-                where: { uuid: uuid },
+                where: { 
+                    uuid: uuid,
+                    bodaId
+                },
                 attributes: {
                     exclude: ['createdAt', 'updatedAt']
                 }
@@ -77,6 +81,7 @@ class Invitados {
     confirmarInvitacion = async(req, res) => {
         // Extraer uuid
         const { uuid } = req.params
+        const bodaId = req.header('x-wedding-header')
 
         // Verificar si hay errores
         const errors = validationResult(req)
@@ -88,7 +93,10 @@ class Invitados {
         try {
             // Buscar la invitación
             const invitacion = await Invitacion.findOne({ 
-                where: { uuid: uuid },
+                where: { 
+                    uuid: uuid, 
+                    bodaId 
+                },
                 attributes: {
                     exclude: ['createdAt', 'updatedAt']
                 }

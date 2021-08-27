@@ -7,6 +7,8 @@ import db from './config/db.mjs'
 
 //Importar modelos
 import './models/Invitacion.mjs'
+import './models/Boda.mjs'
+import './models/Relaciones.mjs'
 
 // Crear el servidor
 const app = express()
