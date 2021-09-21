@@ -12,6 +12,10 @@ const Boda = db.define('boda', {
         type: Sequelize.STRING(255),
         allowNull: false
     },
+    slug: {
+        type: Sequelize.STRING,
+        allowNull: true
+    },
     fecha: {
         type: Sequelize.DATEONLY,
         allowNull: false

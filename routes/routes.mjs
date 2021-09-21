@@ -3,6 +3,7 @@ import { check } from 'express-validator'
 
 // Importar controladores
 import Invitados from '../controllers/invitadosController.mjs'
+import Confirmaciones from '../controllers/confirmacionesController.mjs'
 
 // Crear router
 const router = express.Router();
@@ -35,6 +36,22 @@ export default function() {
             check('peques').notEmpty().withMessage('Cuantos niños es obligatorio').isNumeric().withMessage('No es un valor numérico'),
         ],
         Invitados.confirmarInvitacion
+    )
+
+    // CONFIRMACIONES
+    router.post('/confirmar-asistencia/:slug',
+        [
+            check('nombre').notEmpty().withMessage('Tu nombre es obligatorio'),
+            check('apellidos').notEmpty().withMessage('Tus apellidos son obligatorios'),
+            check('email').isEmail().withMessage('No es un email válido'),
+            check('vacuna').notEmpty().withMessage('Debes seleccionar una opción').isIn([1,2,3,4]).withMessage('La opción seleccionada es inválida'),
+            check('asistencia').isBoolean(),
+            check('fiebre_tos').toBoolean(),
+            check('dolor_cabeza').toBoolean(),
+            check('problemas_respirar').toBoolean(),
+            check('dolor_muscular').toBoolean(),
+        ],
+        Confirmaciones.confirmarInvitacion
     )
 
     return router

@@ -9,6 +9,7 @@ import db from './config/db.mjs'
 import './models/Invitacion.mjs'
 import './models/Boda.mjs'
 import './models/Relaciones.mjs'
+import './models/Confirmacion.mjs'
 
 // Crear el servidor
 const app = express()
@@ -47,7 +48,7 @@ db.authenticate()
     .catch(error => console.error("No se pudo conectar a la DB", error));
 
 //Sincronizar con la DB para crear modelos
-db.sync({ force: false, alter: false })
+db.sync({ force: false, alter: true })
     .then(() => console.log("Sincronización DB Exitosa"))
     .catch(error => console.error("No se pudo sincronizar la DB", error));
 
