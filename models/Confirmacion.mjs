@@ -60,6 +60,11 @@ const Confirmacion = db.define('confirmaciones', {
         allowNull: true,
         default: null
     },
+    reservacion: {
+        type: Sequelize.STRING,
+        allowNull: true,
+        default: null
+    }
 }, {
     Sequelize,
     freezeTableName: true,

@@ -22,6 +22,7 @@ class Confirmaciones {
                 { id: 2, value: 'Segunda dosis' },
                 { id: 3, value: 'Única dosis' },
                 { id: 4, value: 'No cuento con ninguna dosis' },
+                { id: 5, value: 'N/A' },
             ]
 
             // Boda Id
@@ -43,7 +44,7 @@ class Confirmaciones {
             }
 
             // Destructuring sobre el request body
-            const { nombre, apellidos, email, vacuna: { value }, asistencia, fiebre_tos, dolor_cabeza, problemas_respirar, dolor_muscular } = body
+            const { nombre, apellidos, email, vacuna: { value }, asistencia, fiebre_tos, dolor_cabeza, problemas_respirar, dolor_muscular, reservacion } = body
 
             // Crear la confirmación
             const confirmacion = await Confirmacion.create({
@@ -56,7 +57,8 @@ class Confirmaciones {
                 fiebreTos: fiebre_tos,
                 dolorCabeza: dolor_cabeza,
                 problemasRespirar: problemas_respirar,
-                dolorMuscular: dolor_muscular
+                dolorMuscular: dolor_muscular, 
+                reservacion
             })
 
             // Objeto de respuesta

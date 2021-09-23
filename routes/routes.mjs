@@ -44,12 +44,13 @@ export default function() {
             check('nombre').notEmpty().withMessage('Tu nombre es obligatorio'),
             check('apellidos').notEmpty().withMessage('Tus apellidos son obligatorios'),
             check('email').isEmail().withMessage('No es un email válido'),
-            check('vacuna').notEmpty().withMessage('Debes seleccionar una opción').isIn([1,2,3,4]).withMessage('La opción seleccionada es inválida'),
+            check('vacuna').notEmpty().withMessage('Debes seleccionar una opción').isIn([1,2,3,4,5]).withMessage('La opción seleccionada es inválida'),
             check('asistencia').isBoolean(),
             check('fiebre_tos').toBoolean(),
             check('dolor_cabeza').toBoolean(),
             check('problemas_respirar').toBoolean(),
             check('dolor_muscular').toBoolean(),
+            check('reservacion').isString().optional({ nullable: true })
         ],
         Confirmaciones.confirmarInvitacion
     )
