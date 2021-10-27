@@ -107,11 +107,11 @@ class Invitados {
             }
 
             // Extraer valores
-            const { adultos, escuincles } = req.body
+            const { adultos, peques } = req.body
             
             // Guardar cambios
             invitacion.adultosConfirmados = adultos
-            invitacion.escuinclesConfirmados = escuincles
+            invitacion.pequesConfirmados = peques
             invitacion.confirmado = true
             invitacion.save()
 
